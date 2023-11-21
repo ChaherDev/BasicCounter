@@ -8,14 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var value = 0
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            HStack {
+                MinusButtonView(value: $value)
+                .padding()
+                PlusButtonView(value: $value)
+                .padding()
+            }
+
+            Text(value.description)
+                .padding()
+            Button {
+                value = 0
+            } label: {
+                Text("Reset")
+                    .padding()
+                    .buttonStyle(.borderedProminent)
+            }
         }
-        .padding()
+        .font(.largeTitle)
     }
 }
 
